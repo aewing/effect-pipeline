@@ -1,0 +1,22 @@
+{
+  "name": "effect-pipeline",
+  "version": "0.1.0",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "cli": "bun run src/cli/index.ts",
+    "test": "bun test",
+    "changelog": "bun run scripts/changelog.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@effect/cli": "^0.67.1",
+    "@effect/platform-bun": "^0.74.0",
+    "effect": "^3.16.16"
+  }
+}
