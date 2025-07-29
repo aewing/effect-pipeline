@@ -7,6 +7,25 @@ export * from "./transform/mapJson";
 export { filter, type FilterConfig } from "./transform/filter";
 export { batch, type BatchConfig } from "./transform/batch";
 
+// Zod Schema Validation Transform nodes
+export { 
+  validateSchema, 
+  safeValidateSchema, 
+  type ValidateSchemaConfig 
+} from "./transform/validateSchema";
+export { 
+  parseSchema, 
+  parseWithSchema, 
+  type ParseSchemaConfig 
+} from "./transform/parseSchema";
+export { 
+  refineSchema, 
+  conditionalSchema, 
+  transformWithSchema,
+  type RefineSchemaConfig,
+  type ConditionalSchemaConfig 
+} from "./transform/refineSchema";
+
 // Egress nodes
 export * from "./egress/http";
 export { httpResponse, type HttpResponseConfig } from "./egress/httpResponse";
