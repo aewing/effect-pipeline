@@ -17,6 +17,7 @@
   "dependencies": {
     "@effect/cli": "^0.67.1",
     "@effect/platform-bun": "^0.74.0",
-    "effect": "^3.16.16"
+    "effect": "^3.16.16",
+    "zod": "^4.0.11"
   }
 }
