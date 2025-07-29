@@ -1,3 +1,4 @@
+import { Effect } from "effect";
 import { NodeKind, type Node } from "../../core/node";
 
 export interface BatchConfig {
@@ -19,7 +20,7 @@ export function batch(
   return {
     kind: NodeKind.Transform,
     name,
-    run: async (input) => {
+    run: (input) => Effect.gen(function* () {
       batchBuffer.push(input);
       
       // If we have enough items, emit the batch
@@ -30,23 +31,16 @@ export function batch(
           clearTimeout(timeoutId);
           timeoutId = null;
         }
+        console.log(`Batch "${name}" emitting full batch of ${currentBatch.length} items`);
         return currentBatch;
       }
       
-      // Set timeout for partial batches
-      if (config.timeout && !timeoutId) {
-        timeoutId = setTimeout(() => {
-          if (batchBuffer.length > 0) {
-            const currentBatch = [...batchBuffer];
-            batchBuffer = [];
-            timeoutId = null;
-            return currentBatch;
-          }
-        }, config.timeout);
-      }
+      // For immediate processing in Effect pipelines, return current single item as batch
+      // In a real streaming implementation, this would handle partial batches differently
+      console.log(`Batch "${name}" buffering item (${batchBuffer.length}/${config.size})`);
       
-      // For now, return the current item (in a real implementation, this would be more complex)
+      // Return a single-item batch for now to keep the pipeline flowing
       return [input];
-    }
+    })
   };
 } 

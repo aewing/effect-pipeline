@@ -1,3 +1,4 @@
+import { Effect } from "effect";
 import { NodeKind, type Node } from "../../core/node";
 
 export interface FilterConfig {
@@ -15,13 +16,13 @@ export function filter(
   return {
     kind: NodeKind.Transform,
     name,
-    run: async (input) => {
+    run: (input) => Effect.gen(function* () {
       if (config.predicate(input)) {
         return input;
       } else {
-        // Filter out by returning null/undefined or throwing
-        throw new Error(`Data filtered out by ${name}`);
+        // Filter out by failing with an error
+        return yield* Effect.fail(new Error(`Data filtered out by ${name}`));
       }
-    }
+    })
   };
 } 
