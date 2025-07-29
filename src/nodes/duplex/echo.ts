@@ -1,3 +1,4 @@
+import { Effect } from "effect";
 import { NodeKind, type Node } from "../../core/node";
 
 export interface EchoConfig {
@@ -15,10 +16,10 @@ export function echo(
   return {
     kind: NodeKind.Duplex,
     name,
-    run: async (input) => {
+    run: (input) => Effect.gen(function* () {
       const prefix = config.prefix || "";
       console.log(`${prefix}Echo:`, input);
       return input;
-    }
+    })
   };
 } 

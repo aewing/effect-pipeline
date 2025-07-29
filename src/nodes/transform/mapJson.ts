@@ -1,3 +1,4 @@
+import { Effect } from "effect";
 import { NodeKind, type Node } from "../../core/node";
 
 export interface MapJsonConfig {
@@ -15,8 +16,13 @@ export function mapJson(
   return {
     kind: NodeKind.Transform,
     name,
-    run: async (input) => {
-      return config.transform(input);
-    }
+    run: (input) => Effect.gen(function* () {
+      try {
+        const result = config.transform(input);
+        return result;
+      } catch (error) {
+        return yield* Effect.fail(error instanceof Error ? error : new Error(String(error)));
+      }
+    })
   };
 } 

@@ -23,5 +23,6 @@
     "@effect/platform-bun": "^0.74.0",
     "effect": "^3.16.16",
     "postgres": "^3.4.4"
+    "zod": "^4.0.11"
   }
 }
