@@ -1,12 +1,18 @@
+export * from './ingress/index.js';
+export * from './egress/index.js';
+export * from './transform/index.js';
+export * from './duplex/index.js';
+
 // Ingress nodes
 export * from "./ingress/http";
 export { httpServer, type HttpServerConfig } from "./ingress/httpServer";
 export { sqliteIngress, sqliteSelect, type SqliteIngressConfig, type SqliteQueryResult } from "./ingress/sqlite";
 
-// Transform nodes  
-export * from "./transform/mapJson";
-export { filter, type FilterConfig } from "./transform/filter";
-export { batch, type BatchConfig } from "./transform/batch";
+// PostgreSQL nodes
+export * from './postgres';
+
+// Types
+export * from './types';
 
 // Zod Schema Validation Transform nodes
 export { 
@@ -41,6 +47,7 @@ export {
   type WebSocketMessage, 
   type WebSocketServerResponse 
 } from "./duplex/websocketServer";
+
 export { 
   websocketClient, 
   createWebSocketClient, 

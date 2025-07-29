@@ -6,7 +6,11 @@
   "scripts": {
     "cli": "bun run src/cli/index.ts",
     "test": "bun test",
-    "changelog": "bun run scripts/changelog.ts"
+    "changelog": "bun run scripts/changelog.ts",
+    "postgres:example": "bun run examples/postgres-example.ts",
+    "postgres:up": "docker-compose up -d",
+    "postgres:down": "docker-compose down",
+    "postgres:logs": "docker-compose logs -f postgres"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -18,6 +22,7 @@
     "@effect/cli": "^0.67.1",
     "@effect/platform-bun": "^0.74.0",
     "effect": "^3.16.16",
+    "postgres": "^3.4.4"
     "zod": "^4.0.11"
   }
 }
