@@ -1,15 +1,10 @@
-// Ingress nodes
-export * from "./ingress/http";
-export { httpServer, type HttpServerConfig } from "./ingress/httpServer";
+export * from './ingress/index.js';
+export * from './egress/index.js';
+export * from './transform/index.js';
+export * from './duplex/index.js';
 
-// Transform nodes  
-export * from "./transform/mapJson";
-export { filter, type FilterConfig } from "./transform/filter";
-export { batch, type BatchConfig } from "./transform/batch";
+// PostgreSQL nodes
+export * from './postgres/index.js';
 
-// Egress nodes
-export * from "./egress/http";
-export { httpResponse, type HttpResponseConfig } from "./egress/httpResponse";
-
-// Duplex nodes
-export * from "./duplex/echo"; 
+// Types
+export * from './types.js'; 
