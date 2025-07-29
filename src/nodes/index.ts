@@ -12,4 +12,20 @@ export * from "./egress/http";
 export { httpResponse, type HttpResponseConfig } from "./egress/httpResponse";
 
 // Duplex nodes
-export * from "./duplex/echo"; 
+export * from "./duplex/echo";
+export { 
+  websocketServer, 
+  createWebSocketServer, 
+  type WebSocketServerConfig, 
+  type WebSocketMessage, 
+  type WebSocketServerResponse 
+} from "./duplex/websocketServer";
+export { 
+  websocketClient, 
+  createWebSocketClient, 
+  disconnectWebSocketClient, 
+  isWebSocketClientConnected,
+  type WebSocketClientConfig, 
+  type WebSocketClientMessage, 
+  type WebSocketClientResponse 
+} from "./duplex/websocketClient"; 
